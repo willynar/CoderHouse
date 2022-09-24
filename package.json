@@ -4,7 +4,8 @@
   "description": "proyecto coder house curso backend",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
