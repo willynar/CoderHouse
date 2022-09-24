@@ -14,7 +14,7 @@ const server = app.listen(PORT, async () => {
 server.on('error', error => console.log(`Error en servidor ${error}`))
 
 app.get('/', (req, res) => {
-    res.status(200).json({ mensaje: 'Hola mundo' })
+    res.status(200).send('<h1>Bienvenido</h1><h3>Rutas</h3><p>/productos<p></p><p>/productoRamdom</p>')
 })
 
 app.get('/productos', async (req, res) => {
