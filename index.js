@@ -18,7 +18,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/productos', async (req, res) => {
-
     res.send(await cont.getAll())
 })
 
