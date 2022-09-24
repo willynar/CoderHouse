@@ -1,0 +1,29 @@
+{
+  "name": "coderhouse",
+  "version": "1.0.0",
+  "description": "proyecto coder house curso backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willynar/CoderHouse.git"
+  },
+  "keywords": [
+    "coder",
+    "house",
+    "curso",
+    "back",
+    "end"
+  ],
+  "author": "william jose naranjo ardila",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willynar/CoderHouse/issues"
+  },
+  "homepage": "https://github.com/willynar/CoderHouse#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
