@@ -14,19 +14,17 @@ const server = app.listen(PORT, async () => {
 server.on('error', error => console.log(`Error en servidor ${error}`))
 
 app.get('/', (req, res) => {
-    res.send({ mensaje: 'hola mundo' })
+    res.status(200).json({ mensaje: 'Hola mundo' })
 })
 
 app.get('/productos', async (req, res) => {
-    res.send(await cont.getAll())
+    res.status(200).json(await cont.getAll())
 })
 
 app.get('/productoRamdom', async (req, res) => {
     let indiceRamdom = parseInt(Math.random() * (3) + 1);
-    res.send(await cont.getById(indiceRamdom))
+    res.status(200).json(await cont.getById(indiceRamdom))
 })
-
-
 
 let InicializarProductos = async () => {
     await cont.save({ title: "Escuadra", price: 251291.32, thumbnail: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Squadra_45.jpg", id: 0 })
