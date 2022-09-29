@@ -2,7 +2,7 @@
   "name": "coderhouse",
   "version": "1.0.0",
   "description": "proyecto coder house curso backend",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "node index.js",
     "start": "node server.js"
