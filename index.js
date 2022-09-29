@@ -1,10 +1,10 @@
 const express = require('express');
-const Contenedor = require('./Clase2/contenedor');
+const Contenedor = require('./contenedor');
 const app = express()
 
 
 const PORT = 8080
-const cont = new Contenedor('Clase2/productos')
+const cont = new Contenedor('productos')
 
 const server = app.listen(PORT, async () => {
     console.log(`Servidor Http escuchando en el puerto ${server.address().port}`)
