@@ -7,8 +7,9 @@ class Contenedor {
     }
 
     async save(objet) {
-        let array = []
-        await fs.promises.readFile(`./${this.nombreArchivo}${this.extencion}`, 'utf-8')
+        if (fs.existsSync(`./${this.nombreArchivo}${this.extencion}`)) {
+            let array = []
+            await fs.promises.readFile(`./${this.nombreArchivo}${this.extencion}`, 'utf-8')
             .then(async result => {
                 let ultimoId = 0;
                 //se valida si tiene contenido el archivo y convierte contenido a json array
@@ -25,13 +26,16 @@ class Contenedor {
                 try {
                     await fs.promises.writeFile(`./${this.nombreArchivo}${this.extencion}`, JSON.stringify(array))
                 } catch (err) {
-                    console.log(err)
+                    reject(err)
                 }
             })
             .catch(err => {
                 console.log(err)
             })
-        return objet.id
+            return objet.id
+        }else{
+            return 'No existe el archivo'
+        }
     }
 
     async getById(id) {
@@ -41,8 +45,9 @@ class Contenedor {
                 if (result) {
                     let array = JSON.parse(result)
                     array.forEach(x => {
-                        if (x.id == id)
+                        if (x.id == id){
                             objet = x
+                        }
                     })
                 }
             })
@@ -51,7 +56,8 @@ class Contenedor {
             })
         //se valida si el objeto si existe
         if (objet === undefined) {
-            return null
+            return {error:'producto no encontrado'}
+            // return null
         } else {
             return objet
         }
@@ -73,13 +79,40 @@ class Contenedor {
         return array
     }
 
+      
+    async updateById(objectUpd) {
+        let objet
+        return new Promise(async (resolve, reject) => {
+            let array = await this.getAll()
+            let objeto = array.find(x=>x.id === objectUpd.id)
+            //se valida que el ojeto exista
+            const index = array.indexOf(objeto);
+            if (index > -1) {
+                array[index].title = objectUpd.title
+                array[index].price = objectUpd.price
+                array[index].thumbnail = objectUpd.thumbnail
+                objet = array[index]
+                try {
+                    await fs.promises.writeFile(`./${this.nombreArchivo}${this.extencion}`, JSON.stringify(array))
+                    resolve(objet)
+
+                } catch (err) {
+                    reject(err)
+                }
+            } else {
+                resolve(null)
+            }
+        })
+    }
+
     async deleteById(id) {
         return new Promise(async (resolve, reject) => {
-            let objeto = await this.getById(id);
+            let array = await this.getAll()
+            let objeto = array.find(x=>x.id === id)
             //se valida que el ojeto exista
-            if (objeto) {
-                let array = await this.getAll()
-                array.shift(objeto)
+            const index = array.indexOf(objeto);
+            if (index > -1) {
+                array.splice(index, 1)
                 try {
                     await fs.promises.writeFile(`./${this.nombreArchivo}${this.extencion}`, JSON.stringify(array))
                     resolve('objeto eliminado')
