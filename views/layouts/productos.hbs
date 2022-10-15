@@ -1,0 +1,44 @@
+{{> headers}}
+<br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="/">Guardar Productos<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="">Productos Cargados <span class="sr-only"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Imagen</th>
+        </tr>
+    </thead>
+    {{#if lista}}
+    <tbody>
+        {{#each lista}}
+        <tr>
+            <th scope="row">{{this.id}}</th>
+            <td>{{this.title}}</td>
+            <td>@{{this.price}}</td>
+            <td><img src="{{this.thumbnail}}" alt="" style="width:30px ;"> </td>
+        </tr>
+        {{/each}}
+    </tbody>
+    {{else}}
+    <tbody>
+        <tr>
+            <td colspan="4">Sin datos</td>
+        </tr>
+    </tbody>
+    {{/if}}
+</table>
+{{> scripts}}

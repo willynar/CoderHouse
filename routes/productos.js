@@ -20,7 +20,6 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
     res.status(200).json(await cont.save(req.body))
 })
 
