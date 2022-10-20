@@ -139,27 +139,3 @@ class Contenedor {
 }
 
 module.exports = Contenedor
-// let contenedorDeProductos = new Contenedor("productos")
-// let prueba = async () => {
-//     console.log(await contenedorDeProductos.save({ title: "papa", price: 251291.32, thumbnail: "https://www.infobae.com/new-resizer/rJPvFqJ0gbw7oH7lWvfGwJxcN3A=/992x606/filters:format(webp):quality(85)/cloudfront-us-east-1.images.arcpublishing.com/infobae/E7U6CHWZRBFCPN2ESFNKXYFO4U.jpeg", id: 0 }))// console.log(contenedor.getId(1))
-    
-//     console.log(await contenedorDeProductos.save({ title: "yuca", price: 251291.32, thumbnail: "https://www.infobae.com/new-resizer/rJPvFqJ0gbw7oH7lWvfGwJxcN3A=/992x606/filters:format(webp):quality(85)/cloudfront-us-east-1.images.arcpublishing.com/infobae/E7U6CHWZRBFCPN2ESFNKXYFO4U.jpeg", id: 0 }))// console.log(contenedor.getId(1))
-    
-//     console.log(await contenedorDeProductos.getById(1))
-
-//     console.log(await contenedorDeProductos.getAll())
-
-//     await contenedorDeProductos.deleteById(1)
-//         .then(console.log)
-//         .catch(console.log)
-
-//     console.log(await contenedorDeProductos.getAll())
-
-//     await contenedorDeProductos.deleteAll()
-//         .then(console.log)
-//         .catch(console.log)
-
-//     console.log(await contenedorDeProductos.getAll())
-// }
-
-// prueba()

@@ -11,8 +11,6 @@ router.get('/cargados/', async (req, res) => {
     let request = await http.get('http://localhost:8080/productos', (ress) => {
         ress.setEncoding('utf8');
         ress.on('data', function (chunk) {
-            console.log(JSON.parse(chunk));
-        
             res.render('main', { layout: 'productos', lista: JSON.parse(chunk) })
         });
 
@@ -20,7 +18,9 @@ router.get('/cargados/', async (req, res) => {
     request.end()
 })
 
-
+router.get('/combinados/', async (req, res) => {
+    res.render('main', { layout: 'productosCombinado' })
+})
 
 
 
