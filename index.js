@@ -33,11 +33,12 @@ app.use(async function (err, req, res, next) {
 app.engine('hbs',
     handlebars.engine({
         extname: '.hbs',
-        defaultLayout: 'index.hbs',
+        defaultLayout:  process.env.HBS_DEFAULT_LAYOUT,
         layoutsDir_dirname: '/views/layouts',
         partialsDir_dirname: '/views/partials'
     })
 )
+
 app.set('view engine', 'hbs')
 app.set('views', './views')
 
