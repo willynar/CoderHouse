@@ -1,6 +1,6 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
-const http = require('http')
+import http from 'http'
 
 router.get('/', async (req, res) => {
     res.render('main', { layout: 'guardar' })
@@ -25,4 +25,4 @@ router.get('/combinados/', async (req, res) => {
 
 
 
-module.exports = { router };
+export default { router };

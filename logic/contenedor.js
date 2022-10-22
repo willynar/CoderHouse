@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 class Contenedor {
     constructor(nombreArchivo) {
         this.nombreArchivo = nombreArchivo
@@ -138,4 +138,4 @@ class Contenedor {
 
 }
 
-module.exports = Contenedor
+export default Contenedor

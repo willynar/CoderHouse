@@ -1,7 +1,7 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
 
-const Contenedor = require('../logic/contenedor')
+import Contenedor from '../logic/contenedor.js'
 const cont = new Contenedor('productos')
 
 
@@ -31,4 +31,4 @@ router.delete('/:id', async (req, res) => {
     res.status(200).json(await cont.deleteById(parseInt(req.params.id)))
 })
 
-module.exports = {router,InicializarProductos};
+export default { router, InicializarProductos };

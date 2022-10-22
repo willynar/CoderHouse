@@ -1,5 +1,5 @@
-const http = require('http')
-const request = require('request');
+import http from 'http'
+import request from 'request'
 
 class socketsApp {
     constructor(socket, io) {
@@ -68,4 +68,4 @@ let Inicializar = async (socket, io) => {
     await sc.postChats()
 }
 
-module.exports = { Inicializar }
+export default { Inicializar }

@@ -1,7 +1,7 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
 
-const contenedorChat = require('../logic/contenedorChat')
+import contenedorChat from '../logic/contenedorChat.js'
 const cont = new contenedorChat('chat')
 
 
@@ -18,4 +18,4 @@ router.post('/', async (req, res) => {
     res.status(200).json(await cont.save(req.body))
 })
 
-module.exports = {router,InicializarChat};
+export default { router, InicializarChat };

@@ -1,19 +1,22 @@
-const express = require('express');
-const { Server: HttpServer } = require('http');
-const { Server: IOServer } = require('socket.io');
-
-const productos = require('./routes/productos')
-const chats = require('./routes/chat')
-const vistasHandlebars = require('./routes/Views')
-const socketsAPP = require('./logic/sockets')
-const socketsAPPChat = require('./logic/socketsChat')
+import express from 'express';
+import * as http from 'http';
+import * as socketIo from 'socket.io';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import productos from './routes/productos.js'
+import chats from './routes/chat.js'
+import vistasHandlebars from './routes/Views.js'
+import socketsAPP from './logic/sockets.js'
+import socketsAPPChat from './logic/socketsChat.js'
 
 
 
 const app = express()
-const httpServer = new HttpServer(app)
-const io = new IOServer(httpServer)
-const handlebars = require('express-handlebars');
+const httpServer = new http.createServer(app)
+const io = new socketIo.Server(httpServer)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+import handlebars from 'express-handlebars'
 const PORT = 8080
 
 
@@ -48,9 +51,9 @@ httpServer.listen(PORT, async () => {
     await chats.InicializarChat()
 })
 
-io.on('connection',  async (socket) => {
-   await socketsAPP.Inicializar(socket, io)
-   await socketsAPPChat.Inicializar(socket, io)
+io.on('connection', async (socket) => {
+    await socketsAPP.Inicializar(socket, io)
+    await socketsAPPChat.Inicializar(socket, io)
 
 })
 
