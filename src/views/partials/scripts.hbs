@@ -20,8 +20,7 @@
         var data = {
             "title": $("input[name='title']").val(),
             "price": $("input[name='price']").val(),
-            "thumbnail": $("input[name='thumbnail']").val(),
-            "id": 0
+            "thumbnail": $("input[name='thumbnail']").val()
         }
         fetch('http://localhost:8080/productos', {
             method: 'POST',

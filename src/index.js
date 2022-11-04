@@ -8,7 +8,7 @@ import chats from './routes/chat.js'
 import vistasHandlebars from './routes/Views.js'
 import socketsAPP from './logic/sockets.js'
 import socketsAPPChat from './logic/socketsChat.js'
-
+import bath from './logic/batch.js'
 
 
 const app = express()
@@ -22,6 +22,8 @@ const PORT = 8080
 
 
 
+
+bath.operationsDb();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
@@ -34,13 +36,13 @@ app.engine('hbs',
     handlebars.engine({
         extname: '.hbs',
         defaultLayout:  process.env.HBS_DEFAULT_LAYOUT,
-        layoutsDir_dirname: '/views/layouts',
-        partialsDir_dirname: '/views/partials'
+        layoutsDir_dirname: './src/views/layouts',
+        partialsDir_dirname: './src/views/partials'
     })
 )
 
 app.set('view engine', 'hbs')
-app.set('views', './views')
+app.set('views', './src/views')
 
 app.use(express.static(__dirname + '/public'))
 
@@ -48,11 +50,11 @@ app.set('socketio', io);
 
 httpServer.listen(PORT, async () => {
     console.log(`Servidor Http escuchando en el puerto ${httpServer.address().port}`)
-    await productos.InicializarProductos()
-    await chats.InicializarChat()
 })
 
+
 io.on('connection', async (socket) => {
+    
     await socketsAPP.Inicializar(socket, io)
     await socketsAPPChat.Inicializar(socket, io)
 

@@ -43,8 +43,7 @@
         const producto = {
             title: document.getElementsByName('title')[0].value,
             price: document.getElementsByName('price')[0].value,
-            thumbnail: document.getElementsByName('thumbnail')[0].value,
-            id: 0
+            thumbnail: document.getElementsByName('thumbnail')[0].value
         }
         socket.emit('nuevosProductos', producto)
         return false;
@@ -77,8 +76,7 @@
         const producto = {
             email: document.getElementsByName('user')[0].value,
             message: document.getElementsByName('message')[0].value,
-            date: new Date(),
-            id: 0
+            date: new Date()
         }
         socket.emit('nuevosChats', producto)
         return false;
