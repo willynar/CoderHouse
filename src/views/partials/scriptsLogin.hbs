@@ -12,22 +12,26 @@
     crossorigin="anonymous"></script>
 
 <script type="application/javascript">
-    $("#formSave").submit(function (e) {
+    $("#formLogin").submit(function (e) {
         e.preventDefault();
         var data = {
-            "title": $("input[name='title']").val(),
-            "price": $("input[name='price']").val(),
-            "thumbnail": $("input[name='thumbnail']").val(),
-            "id": 0
+            "username": $("input[name='username']").val(),
+            "password": $("input[name='password']").val(),
         }
-        fetch(`http://${location.host}/productos`, {
+        fetch(`http://${location.host}/login`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' },
         })
             .then(response => response.json())
             .catch(error => console.error('Error:', error))
-            .then(response => alert(`Nuevo Id: ${response}`));
+            .then(response => {
+                alert(`${response != null ? "Bienvenido " + data.username + "" : "Datos de usuario incorectos"}`)
+                if (response != null) {
+                    sessionStorage.setItem("idUsuario", response)
+                    sessionStorage.setItem("usuario", data.username)
+                    window.location.href = `http://${location.host}/combinados`;
+                }
+            });
     });
-
 </script>
