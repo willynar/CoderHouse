@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "build": "babel-node src/server.js -o index.js",
-    "test": "babel-node index.js",
+    "build-babel": "babel-node src/server.js -o index.js",
+    "test-babel": "babel-node index.js",
     "node-fork": "node src/server.js",
     "node-cluster": "node src/server.js -p 8081 -m CLUSTER --prof",
     "pm2-fork": "pm2 start index.js -p 8081",
