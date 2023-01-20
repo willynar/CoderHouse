@@ -33,7 +33,7 @@ const optionsArgv = {
     },
     default: {
         mode: 'FORK',
-        port: 8080
+        port: process.env.PORT || 8080
     }
 }
 
@@ -80,7 +80,7 @@ app.engine('hbs',
 
 app.set('view engine', 'hbs')
 // // app.set('views', './views')
-app.set('views',`${__dirname}\\views`);
+app.set('views', `${__dirname}\\views`);
 
 app.use(express.static(__dirname + '/public'))
 
